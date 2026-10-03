@@ -26,3 +26,22 @@ uv run python -c "from taller03.telemetry_mcp import list_alerts, summarize_aler
 
 El siguiente paso será conectar estas herramientas al agente y, después, reemplazar
 la colección en memoria por consultas a la fuente de telemetría elegida.
+
+### Cliente H200
+
+El cliente reutilizable está en `src/taller03/h200.py`. Descubre los modelos
+servidos, por lo que no requiere escribir un id de modelo ni una API key:
+
+```python
+from taller03.h200 import H200
+
+h200 = H200()
+respuesta = h200.chat([
+	{"role": "user", "content": "¿Qué es un Pod en Kubernetes?"},
+])
+vectores = h200.embeddings(["Kubernetes Pod", "Kubernetes Service"])
+```
+
+Variables opcionales: `H200_HOST`, `H200_LLM_PORT`, `H200_EMB_PORT`,
+`H200_EMBEDDING_PREFIX`. Por defecto usa `172.28.230.10`, los puertos `12555`
+y `11434`, y el modelo de embeddings cuyo id comienza por `bge-m3`.
