@@ -45,3 +45,20 @@ vectores = h200.embeddings(["Kubernetes Pod", "Kubernetes Service"])
 Variables opcionales: `H200_HOST`, `H200_LLM_PORT`, `H200_EMB_PORT`,
 `H200_EMBEDDING_PREFIX`. Por defecto usa `172.28.230.10`, los puertos `12555`
 y `11434`, y el modelo de embeddings cuyo id comienza por `bge-m3`.
+
+### RAG con la H200
+
+`rag_taller03.py` indexa los PDFs del folder `corpus` en Qdrant local, recupera
+por similitud coseno y genera exclusivamente con la H200. No usa OpenAI,
+Anthropic ni API keys:
+
+```bash
+uv sync
+docker run -p 6333:6333 qdrant/qdrant
+uv run python -m taller03.rag_taller03 "¿Qué componentes tiene el control plane de Kubernetes?"
+```
+
+Por defecto usa `http://localhost:6333` y la colección `taller03_kubernetes`.
+Se pueden cambiar con `QDRANT_URL`, `QDRANT_COLLECTION` y `QDRANT_API_KEY`.
+Cada ejecución de `indexar()` reemplaza la colección para que el corpus y sus
+embeddings queden sincronizados.
