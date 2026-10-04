@@ -62,3 +62,29 @@ Por defecto usa `http://localhost:6333` y la colección `taller03_kubernetes`.
 Se pueden cambiar con `QDRANT_URL`, `QDRANT_COLLECTION` y `QDRANT_API_KEY`.
 Cada ejecución de `indexar()` reemplaza la colección para que el corpus y sus
 embeddings queden sincronizados.
+
+### Incident Commander con LangGraph
+
+El módulo `src/taller03/incident_commander.py` conecta el MCP de telemetría, el
+RAG y la revisión humana:
+
+```python
+from langgraph.types import Command
+from taller03.incident_commander import IncidentMemory, build_graph
+from taller03.rag_taller03 import RagTaller03
+
+rag = RagTaller03()
+rag.indexar()
+graph = build_graph(rag=rag, memory=IncidentMemory())
+config = {"configurable": {"thread_id": "incident-demo"}}
+
+paused = graph.invoke({}, config)                 # llega a la aprobación humana
+finished = graph.invoke(Command(resume={"approved": False}), config)
+```
+
+El grafo detecta la alerta activa de mayor prioridad, clasifica P1/P2/P3,
+propone código de remediación con el RAG, se pausa antes de cualquier ejecución,
+genera el Post-Incident Review y guarda el incidente en
+`corpus/incident_memory.sqlite3`. Cada nodo agrega tokens, latencia, timestamp y
+detalles a `_traza`. No existe un nodo ejecutor: una propuesta aprobada queda
+marcada como `approved_not_executed` hasta que se añada un ejecutor explícito.
