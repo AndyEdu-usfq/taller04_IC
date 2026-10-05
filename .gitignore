@@ -1,4 +1,22 @@
+# Entorno virtual de Python
 .venv/
 .env
+
+# Caché y bytecode de Python
 __pycache__/
-*.sqlite3
+*.py[cod]
+
+# Cachés de herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archivos de macOS
+.DS_Store
+
+# Archivos temporales de editores
+*.swp
+*.swo
