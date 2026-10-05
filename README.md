@@ -85,6 +85,12 @@ finished = graph.invoke(Command(resume={"approved": False}), config)
 El grafo detecta la alerta activa de mayor prioridad, clasifica P1/P2/P3,
 propone código de remediación con el RAG, se pausa antes de cualquier ejecución,
 genera el Post-Incident Review y guarda el incidente en
-`corpus/incident_memory.sqlite3`. Cada nodo agrega tokens, latencia, timestamp y
+`output_data/incident_memory.sqlite3`. Cada nodo agrega tokens, latencia, timestamp y
 detalles a `_traza`. No existe un nodo ejecutor: una propuesta aprobada queda
 marcada como `approved_not_executed` hasta que se añada un ejecutor explícito.
+
+El flujo también incluye `self_reflect`, `external_judge` y `policy_gate`. El
+modo autónomo se activa únicamente con `autonomous=True` y un `executor` inyectado;
+la política solo permite acciones estructuradas de rollout restart y bloquea
+shell, pipes, borrados y comandos no incluidos en la allowlist. Sin executor, el
+resultado siempre es `not_executed`.
