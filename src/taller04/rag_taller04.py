@@ -1,4 +1,4 @@
-"""RAG de Taller 03: corpus local, Qdrant y generación exclusivamente en la H200.
+"""RAG de Taller 04: corpus local, Qdrant y generación exclusivamente en la H200.
 
 Flujo: PDFs/TXT → embeddings H200 → Qdrant → recuperación → H200.chat.
 No usa OpenAI, Anthropic ni API keys.
@@ -15,14 +15,14 @@ from typing import Any, Protocol
 from pypdf import PdfReader
 from qdrant_client import QdrantClient, models
 
-from taller03.h200 import H200
+from taller04.h200 import H200
 
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 CORPUS_DIR = PROJECT_DIR / "corpus"
 ABSTENCION = "El corpus no contiene información suficiente."
 QDRANT_URL = os.environ.get("QDRANT_URL", "http://localhost:6333")
-QDRANT_COLLECTION = os.environ.get("QDRANT_COLLECTION", "taller03_kubernetes")
+QDRANT_COLLECTION = os.environ.get("QDRANT_COLLECTION", "taller04_kubernetes")
 QDRANT_API_KEY = os.environ.get("QDRANT_API_KEY")
 
 
@@ -83,7 +83,7 @@ def cargar_corpus(corpus_dir: Path = CORPUS_DIR, tamano: int = 1800,
     return fragmentos
 
 
-class RagTaller03:
+class RagTaller04:
     """Índice vectorial Qdrant y generación grounded usando únicamente la H200."""
 
     def __init__(self, cliente: EmbeddingChatClient | None = None,
@@ -194,7 +194,7 @@ def main() -> None:
     parser.add_argument("--top-k", type=int, default=5, help="fragmentos recuperados")
     args = parser.parse_args()
 
-    rag = RagTaller03()
+    rag = RagTaller04()
     total = rag.indexar()
     resultado = rag.responder(" ".join(args.pregunta), top_k=args.top_k)
     print(f"fragmentos indexados: {total}")

@@ -16,7 +16,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command, interrupt
 
-from taller03.rag_taller03 import RagTaller03
+from taller04.rag_taller04 import RagTaller04
 
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
@@ -130,7 +130,7 @@ class LocalTelemetryClient:
     """Adaptador local del MCP simulado; luego puede reemplazarse por un cliente MCP real."""
 
     def firing_alerts(self) -> list[dict[str, Any]]:
-        from taller03.telemetry_mcp import list_alerts
+        from taller04.telemetry_mcp import list_alerts
 
         return list_alerts(status="firing")
 
@@ -247,7 +247,7 @@ def propose_remediation(state: IncidentState, rag: RAGProtocol) -> dict[str, Any
     question = _remediation_question(state)
     contexts = state.get("rag_contexts", [])
     if hasattr(rag, "cliente"):
-        prompt = RagTaller03.construir_prompt(question, contexts)
+        prompt = RagTaller04.construir_prompt(question, contexts)
         result = rag.cliente.chat([
             {"role": "system", "content": "Eres un experto en Kubernetes y remediacion segura. No ejecutes nada."},
             {"role": "user", "content": prompt},
@@ -437,7 +437,7 @@ def build_graph(telemetry: TelemetryClient | None = None, rag: RAGProtocol | Non
     """Construye el grafo con dependencias inyectadas y checkpointer externo."""
     telemetry = telemetry or LocalTelemetryClient()
     if rag is None:
-        rag = RagTaller03()
+        rag = RagTaller04()
         rag.indexar()
     h200 = h200 or getattr(rag, "cliente", None)
     if h200 is None:

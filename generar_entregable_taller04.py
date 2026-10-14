@@ -18,11 +18,11 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, Tabl
 from reportlab.graphics.shapes import Drawing, Line, Polygon, Rect, String
 from xml.sax.saxutils import escape
 
-from taller03.incident_commander import IncidentMemory, build_graph
+from taller04.incident_commander import IncidentMemory, build_graph
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
-OUTPUT_PATH = PROJECT_DIR / "corpus" / "deliverable_taller03.pdf"
+OUTPUT_PATH = PROJECT_DIR / "corpus" / "deliverable_taller04.pdf"
 MEMORY_OUTPUT_PATH = PROJECT_DIR / "output_data" / "incident_memory.sqlite3"
 FONT_DIR = Path("/System/Library/Fonts/Supplemental")
 
@@ -374,7 +374,7 @@ def simulate() -> tuple[Any, dict[str, Any], dict[str, Any], str]:
     h200 = SimulatedH200()
     memory = IncidentMemory(MEMORY_OUTPUT_PATH)
     app = build_graph(telemetry=telemetry, rag=rag, h200=h200, memory=memory)
-    config = {"configurable": {"thread_id": "deliverable-taller03-p1"}}
+    config = {"configurable": {"thread_id": "deliverable-taller04-p1"}}
     paused = app.invoke({}, config)
     if "__interrupt__" not in paused:
         raise RuntimeError("La simulacion no alcanzo el human approval interrupt")
@@ -485,7 +485,7 @@ def build_pdf() -> None:
         make_table(["Agent", "Role", "Implementation evidence"], [
             ["A1 Telemetry observer", "Detect active incidents and select candidates", "detect_telemetry + LocalTelemetryClient"],
             ["A2 Triage classifier", "Review alert evidence, score impact and select among P1/P2/P3", "triage_incident + H200 JSON assessment"],
-            ["A3 RAG investigator", "Retrieve architecture and Kubernetes knowledge", "retrieve_rag + RagTaller03 + Qdrant"],
+            ["A3 RAG investigator", "Retrieve architecture and Kubernetes knowledge", "retrieve_rag + RagTaller04 + Qdrant"],
             ["A4 Remediation engineer", "Propose kubectl/YAML remediation without execution", "propose_remediation + H200.chat"],
             ["A5 Safety reviewer", "Pause and request human approval", "approve_remediation + interrupt"],
             ["A6 PIR analyst", "Produce timeline, RCA and five whys", "post_incident_review + H200 JSON mode"],
@@ -499,8 +499,8 @@ def build_pdf() -> None:
         p("RAG evidence", "DHeading"),
         rich("<b>Ingestion:</b> the Kubernetes architecture and official knowledge PDFs are fragmented.<br/>"
              "<b>Embedding:</b> H200 bge-m3 creates vectors.<br/>"
-             "<b>Vector database:</b> Qdrant collection taller03_kubernetes stores vectors and chunk payloads.<br/>"
-             "<b>Retrieval:</b> retrieve_rag calls RagTaller03.recuperar() and passes the selected contexts to propose_remediation.<br/>"
+             "<b>Vector database:</b> Qdrant collection taller04_kubernetes stores vectors and chunk payloads.<br/>"
+             "<b>Retrieval:</b> retrieve_rag calls RagTaller04.recuperar() and passes the selected contexts to propose_remediation.<br/>"
              "<b>Generation:</b> H200.chat() receives only the alert, triage and retrieved context before proposing remediation.", "DCode"),
         p("MCP tool evidence", "DHeading"),
         make_table(["Tool", "Purpose", "Evidence in telemetry_mcp.py"], [

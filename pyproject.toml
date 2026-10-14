@@ -1,5 +1,5 @@
 [project]
-name = "taller03"
+name = "taller04"
 version = "0.1.0"
 description = "MCP telemetry server that emulates Kubernetes alerts"
 readme = "README.md"
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-taller03 = "taller03:main"
+taller04 = "taller04:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]

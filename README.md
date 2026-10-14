@@ -8,14 +8,14 @@ Prometheus, New Relic, Datadog ni a un clúster real.
 
 ```bash
 uv sync
-uv run taller03
+uv run taller04
 ```
 
 El servidor usa `stdio`, que es el transporte esperado por clientes MCP locales.
 Para probar la lógica sin iniciar el transporte:
 
 ```bash
-uv run python -c "from taller03.telemetry_mcp import list_alerts, summarize_alerts; print(list_alerts(severity='P1')); print(summarize_alerts())"
+uv run python -c "from taller04.telemetry_mcp import list_alerts, summarize_alerts; print(list_alerts(severity='P1')); print(summarize_alerts())"
 ```
 
 ### Herramientas
@@ -29,11 +29,11 @@ la colección en memoria por consultas a la fuente de telemetría elegida.
 
 ### Cliente H200
 
-El cliente reutilizable está en `src/taller03/h200.py`. Descubre los modelos
+El cliente reutilizable está en `src/taller04/h200.py`. Descubre los modelos
 servidos, por lo que no requiere escribir un id de modelo ni una API key:
 
 ```python
-from taller03.h200 import H200
+from taller04.h200 import H200
 
 h200 = H200()
 respuesta = h200.chat([
@@ -48,32 +48,32 @@ y `11434`, y el modelo de embeddings cuyo id comienza por `bge-m3`.
 
 ### RAG con la H200
 
-`rag_taller03.py` indexa los PDFs del folder `corpus` en Qdrant local, recupera
+`rag_taller04.py` indexa los PDFs del folder `corpus` en Qdrant local, recupera
 por similitud coseno y genera exclusivamente con la H200. No usa OpenAI,
 Anthropic ni API keys:
 
 ```bash
 uv sync
 docker run -p 6333:6333 qdrant/qdrant
-uv run python -m taller03.rag_taller03 "¿Qué componentes tiene el control plane de Kubernetes?"
+uv run python -m taller04.rag_taller04 "¿Qué componentes tiene el control plane de Kubernetes?"
 ```
 
-Por defecto usa `http://localhost:6333` y la colección `taller03_kubernetes`.
+Por defecto usa `http://localhost:6333` y la colección `taller04_kubernetes`.
 Se pueden cambiar con `QDRANT_URL`, `QDRANT_COLLECTION` y `QDRANT_API_KEY`.
 Cada ejecución de `indexar()` reemplaza la colección para que el corpus y sus
 embeddings queden sincronizados.
 
 ### Incident Commander con LangGraph
 
-El módulo `src/taller03/incident_commander.py` conecta el MCP de telemetría, el
+El módulo `src/taller04/incident_commander.py` conecta el MCP de telemetría, el
 RAG y la revisión humana:
 
 ```python
 from langgraph.types import Command
-from taller03.incident_commander import IncidentMemory, build_graph
-from taller03.rag_taller03 import RagTaller03
+from taller04.incident_commander import IncidentMemory, build_graph
+from taller04.rag_taller04 import RagTaller04
 
-rag = RagTaller03()
+rag = RagTaller04()
 rag.indexar()
 graph = build_graph(rag=rag, memory=IncidentMemory())
 config = {"configurable": {"thread_id": "incident-demo"}}
