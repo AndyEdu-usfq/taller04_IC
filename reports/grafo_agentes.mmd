@@ -1,0 +1,28 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	telemetry_observer(telemetry_observer)
+	triage_classifier(triage_classifier)
+	rag_investigator(rag_investigator)
+	remediation_engineer(remediation_engineer)
+	safety_reviewer(safety_reviewer)
+	simulation_executor(simulation_executor)
+	pir_analyst(pir_analyst)
+	learning_curator(learning_curator)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> telemetry_observer;
+	pir_analyst --> learning_curator;
+	rag_investigator --> remediation_engineer;
+	remediation_engineer --> safety_reviewer;
+	safety_reviewer --> simulation_executor;
+	simulation_executor --> pir_analyst;
+	telemetry_observer --> triage_classifier;
+	triage_classifier --> rag_investigator;
+	learning_curator --> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

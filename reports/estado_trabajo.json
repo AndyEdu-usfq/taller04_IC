@@ -1,0 +1,56 @@
+{
+  "completo": true,
+  "proyecto": "taller04",
+  "rama": "Taller04",
+  "implementacion": "8 roles LangGraph; simulador; GLM; Qdrant; Langfuse; guardrails; evaluador y RAGAS reales",
+  "evidencia_completa": [
+    "golden_set 20 casos",
+    "21 ataques, propios 21/21, ejemplo 10/21",
+    "20 corridas base y 20 mejoradas",
+    "spans de ambas versiones exportados; tokens cotejados y PII ausente",
+    "10 etiquetas humanas aprueba guardadas antes del juez",
+    "controles previos gpt-oss 10/10, kappa 1",
+    "juez: 20/20 base y 20/20 mejorada",
+    "calibraciones y desacuerdos revisados, sin alterar etiquetas ni veredictos",
+    "cuatro métricas contrastadas con ragas.ascore: coincidencia exacta",
+    "26 pruebas locales aprobadas",
+    "104 métricas RAGAS válidas sobre 13 casos por versión",
+    "informe PDF final de 13 páginas verificado y Markdown",
+    "auditoría de destino: 74 comprobaciones aprobadas",
+    "credenciales y PII revisadas incluido PDF final; cola OTLP vacía"
+  ],
+  "resultado_automatico": {
+    "base": "14/18",
+    "mejorada": "18/18",
+    "ambiguas": 2
+  },
+  "pendientes": [],
+  "procesos_activos_tool_sessions": {},
+  "workspace_preparacion": "/private/tmp/taller04-build",
+  "python_pruebas": "/private/tmp/taller04-venv/bin/python",
+  "python_ragas": "/private/tmp/taller04-ragas-venv/bin/python",
+  "nota": "Entrega completa verificada en el proyecto destino. Kubernetes simulado; inferencias y observabilidad reales. Etiquetas y veredictos originales preservados.",
+  "pruebas_preparacion": 26,
+  "pruebas_entorno_proyecto": 26,
+  "venv_fuera_de_seguimiento_git": true,
+  "evaluaciones_juez_terminadas": {
+    "v1": 20,
+    "v2": 20
+  },
+  "metricas_ragas_terminadas": {
+    "v1": 52,
+    "v2": 52
+  },
+  "auditoria_pendiente": [],
+  "maquetacion_pdf": "PDF final verificado visualmente y por geometría; encabezados unidos al texto",
+  "diagnostico_operativo": "doctor: modelos GLM y gpt-oss disponibles, Langfuse auth_check true, Qdrant taller04_kubernetes presente, golden 20",
+  "cli_produccion": "run usa v2 por defecto; comprobado bloqueo antes del LLM",
+  "finalizador_script": "/private/tmp/taller04-finalize.py",
+  "auditoria_credenciales": "427 archivos, incluido PDF final, sin claves locales; 14 archivos de spans y testigos sin PII del golden",
+  "script_auditoria_credenciales": "/private/tmp/taller04-security-audit.py",
+  "pdf_final": "reports/informe_taller04.pdf; 13 páginas verificadas, sin texto fuera de márgenes",
+  "finalizado_utc": "2026-10-14T19:41:54.154442+00:00",
+  "telemetria_pendiente": 0,
+  "auditoria_destino_comprobaciones": 74,
+  "archivos_destino_cotejados": 33
+}

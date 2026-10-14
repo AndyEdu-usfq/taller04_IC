@@ -1,0 +1,130 @@
+[
+  {
+    "id": "C01",
+    "result": {
+      "answer": "",
+      "status": "error",
+      "error": "Respuesta truncada por presupuesto de tokens",
+      "contextos": [],
+      "model": "zai-org/GLM-5.3-Flash",
+      "traza_id": "288a4c202b16f40e5a4ee70f7371c349",
+      "prompt_version": "v1",
+      "usage": {
+        "tokens_entrada": 7306,
+        "tokens_salida": 3886
+      },
+      "trace": [
+        {
+          "agente": null,
+          "tool": "input",
+          "tipo": "guardrail",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "kubectl",
+          "tipo": "herramienta",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "kubectl",
+          "tipo": "herramienta",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "kubectl",
+          "tipo": "herramienta",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "kubectl",
+          "tipo": "herramienta",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "kubectl",
+          "tipo": "herramienta",
+          "error": null
+        },
+        {
+          "agente": "telemetry_observer",
+          "tool": "telemetry_observer",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "triage_classifier",
+          "tool": "triage_classifier",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "rag_investigator",
+          "tool": "embeddings",
+          "tipo": "llm",
+          "error": null
+        },
+        {
+          "agente": "rag_investigator",
+          "tool": "qdrant.retrieve",
+          "tipo": "retriever",
+          "error": null
+        },
+        {
+          "agente": "rag_investigator",
+          "tool": "rag_investigator",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "remediation_engineer",
+          "tool": "agent",
+          "tipo": "llm",
+          "error": null
+        },
+        {
+          "agente": "remediation_engineer",
+          "tool": "remediation_engineer",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "safety_reviewer",
+          "tool": "agent",
+          "tipo": "llm",
+          "error": null
+        },
+        {
+          "agente": "safety_reviewer",
+          "tool": "safety_reviewer",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "simulation_executor",
+          "tool": "simulation_executor",
+          "tipo": "agent",
+          "error": null
+        },
+        {
+          "agente": "pir_analyst",
+          "tool": "agent",
+          "tipo": "llm",
+          "error": "Respuesta truncada por presupuesto de tokens"
+        },
+        {
+          "agente": "pir_analyst",
+          "tool": "pir_analyst",
+          "tipo": "agent",
+          "error": "Respuesta truncada por presupuesto de tokens"
+        }
+      ],
+      "ambiente_intacto": true,
+      "latencia_ms": 33004.551
+    }
+  }
+]

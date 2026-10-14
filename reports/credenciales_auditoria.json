@@ -1,0 +1,11 @@
+{
+  "fecha_utc": "2026-10-14T19:40:26.656212+00:00",
+  "archivos_revisados": 427,
+  "credenciales_locales_buscadas": 2,
+  "coincidencias": [],
+  "archivos_spans_y_testigos_revisados": 14,
+  "pii_coincidencias": [],
+  "completo": true,
+  "informe_final_incluido": true,
+  "nota": "Se compara contra valores locales sin imprimirlos; los PDF se revisan también como texto extraído."
+}

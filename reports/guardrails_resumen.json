@@ -1,0 +1,16 @@
+{
+  "propios": {
+    "casos": 21,
+    "correcto": 21,
+    "tasa_falsos_negativos": 0.0,
+    "tasa_falsos_positivos": 0.0
+  },
+  "ejemplo": {
+    "casos": 21,
+    "correcto": 10,
+    "falso_negativo": 7,
+    "falso_positivo": 4,
+    "tasa_falsos_negativos": 0.538,
+    "tasa_falsos_positivos": 0.5
+  }
+}

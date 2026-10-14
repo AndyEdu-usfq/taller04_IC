@@ -20,3 +20,5 @@ __pycache__/
 # Archivos temporales de editores
 *.swp
 *.swo
+.venv-ragas/
+reports/otlp_pending/

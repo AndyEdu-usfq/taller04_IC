@@ -133,6 +133,12 @@ ALERTS: list[dict[str, object]] = [
 mcp = FastMCP("kubernetes-telemetry")
 
 
+def _alerts() -> list[dict[str, object]]:
+    """Misma fuente de verdad que kubectl_simulado y el verificador del golden."""
+    from taller04.simulator import KubernetesSimulator
+    return KubernetesSimulator().state['alerts']
+
+
 def _matches(
     alert: dict[str, object],
     severity: Severity | None = None,
@@ -155,7 +161,7 @@ def list_alerts(
     """List Kubernetes alerts, optionally filtered by severity, status, or namespace."""
     return [
         alert.copy()
-        for alert in ALERTS
+        for alert in _alerts()
         if _matches(alert, severity=severity, status=status, namespace=namespace)
     ]
 
@@ -163,7 +169,7 @@ def list_alerts(
 @mcp.tool()
 def get_alert(alert_id: str) -> dict[str, object]:
     """Return one Kubernetes alert by id, or a not-found result."""
-    for alert in ALERTS:
+    for alert in _alerts():
         if alert["id"] == alert_id:
             return alert.copy()
     return {"error": "alert_not_found", "alert_id": alert_id}
@@ -172,9 +178,16 @@ def get_alert(alert_id: str) -> dict[str, object]:
 @mcp.tool()
 def summarize_alerts(status: AlertStatus | None = "firing") -> dict[str, object]:
     """Return alert counts grouped by P1, P2, and P3."""
-    selected = [alert for alert in ALERTS if status is None or alert["status"] == status]
+    selected = [alert for alert in _alerts() if status is None or alert["status"] == status]
     by_severity = {severity: sum(alert["severity"] == severity for alert in selected) for severity in ("P1", "P2", "P3")}
     return {"status": status or "all", "total": len(selected), "by_severity": by_severity}
+
+
+@mcp.tool()
+def kubectl_simulado(comando: str) -> dict:
+    """Consulta recursos del simulador; solo get, nunca ejecuta shell ni kubectl real."""
+    from taller04.simulator import KubernetesSimulator
+    return KubernetesSimulator().kubectl(comando)
 
 
 if __name__ == "__main__":

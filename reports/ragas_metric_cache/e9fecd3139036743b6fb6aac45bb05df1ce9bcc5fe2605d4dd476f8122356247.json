@@ -1,0 +1,1 @@
+{"row": {"id": "C18", "tipo": "simple", "metrica": "recall_contexto", "valor": 1.0, "comentario": "1/1 · [sí] Hay 3 alertas P1 firing.", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "e9fecd3139036743b6fb6aac45bb05df1ce9bcc5fe2605d4dd476f8122356247", "cache_source": ""}, "source": "reports/v1/ragas_resultados.csv"}

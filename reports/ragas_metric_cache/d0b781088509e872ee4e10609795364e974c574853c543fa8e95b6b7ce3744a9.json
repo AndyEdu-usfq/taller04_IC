@@ -1,0 +1,1 @@
+{"row": {"id": "C04", "tipo": "simple", "metrica": "precision_contexto", "valor": 0.9999999999, "comentario": "v = [1, 0, 0]", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "d0b781088509e872ee4e10609795364e974c574853c543fa8e95b6b7ce3744a9", "cache_source": ""}, "source": "reports/v1/ragas_resultados.csv"}

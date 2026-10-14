@@ -1,96 +1,113 @@
-## Taller 03: MCP de telemetría
+# Taller04 — Incident Commander Kubernetes + LLMOps (opción C)
 
-Servidor MCP local que emula una herramienta de observabilidad para alertas de
-Kubernetes. Expone alertas P1, P2 y P3 deterministas, sin conectarse todavía a
-Prometheus, New Relic, Datadog ni a un clúster real.
+Kubernetes y alertas son **simulados**; las inferencias GLM-5.3-Flash y gpt-oss:120b,
+embeddings H200, Qdrant y observaciones Langfuse son reales. Requiere VPN GlobalProtect.
+Ocho roles LangGraph: telemetría, triage, investigación RAG, remediación, revisión,
+ejecución simulada, PIR y memoria. Nunca invoca shell o kubectl real.
 
-### Ejecutar
-
-```bash
-uv sync
-uv run taller04
-```
-
-El servidor usa `stdio`, que es el transporte esperado por clientes MCP locales.
-Para probar la lógica sin iniciar el transporte:
+## Preparar
 
 ```bash
-uv run python -c "from taller04.telemetry_mcp import list_alerts, summarize_alerts; print(list_alerts(severity='P1')); print(summarize_alerts())"
+uv sync --python 3.12
+cp .env.example .env
+# Completar LANGFUSE_* con las claves del proyecto local; nunca publicarlas.
+uv run taller04 doctor
+uv run taller04 setup
+uv run taller04 index
 ```
 
-### Herramientas
+`index` reconstruye solo la colección `taller04_kubernetes` a partir de
+`data/knowledge`. La colección anterior no se borra. `data/kubernetes.json` contiene
+la verdad del simulador. `corpus/` y el grafo anterior se preservan como antecedentes.
+Las consultas `kubectl_verificacion` del golden se ejecutan sobre ese snapshot,
+independientemente de la respuesta LLM.
 
-- `list_alerts`: filtra por `severity`, `status` y `namespace`. Por defecto devuelve alertas activas.
-- `get_alert`: obtiene el detalle de una alerta por `alert_id`.
-- `summarize_alerts`: cuenta alertas por severidad.
-
-El siguiente paso será conectar estas herramientas al agente y, después, reemplazar
-la colección en memoria por consultas a la fuente de telemetría elegida.
-
-### Cliente H200
-
-El cliente reutilizable está en `src/taller04/h200.py`. Descubre los modelos
-servidos, por lo que no requiere escribir un id de modelo ni una API key:
-
-```python
-from taller04.h200 import H200
-
-h200 = H200()
-respuesta = h200.chat([
-	{"role": "user", "content": "¿Qué es un Pod en Kubernetes?"},
-])
-vectores = h200.embeddings(["Kubernetes Pod", "Kubernetes Service"])
-```
-
-Variables opcionales: `H200_HOST`, `H200_LLM_PORT`, `H200_EMB_PORT`,
-`H200_EMBEDDING_PREFIX`. Por defecto usa `172.28.230.10`, los puertos `12555`
-y `11434`, y el modelo de embeddings cuyo id comienza por `bge-m3`.
-
-### RAG con la H200
-
-`rag_taller04.py` indexa los PDFs del folder `corpus` en Qdrant local, recupera
-por similitud coseno y genera exclusivamente con la H200. No usa OpenAI,
-Anthropic ni API keys:
+## Operar
 
 ```bash
-uv sync
-docker run -p 6333:6333 qdrant/qdrant
-uv run python -m taller04.rag_taller04 "¿Qué componentes tiene el control plane de Kubernetes?"
+uv run taller04 run --version v2 --question '¿Cuántas alertas P1 firing hay?'
+uv run taller04-mcp  # servidor MCP: list_alerts, get_alert, summarize_alerts, kubectl_simulado
 ```
 
-Por defecto usa `http://localhost:6333` y la colección `taller04_kubernetes`.
-Se pueden cambiar con `QDRANT_URL`, `QDRANT_COLLECTION` y `QDRANT_API_KEY`.
-Cada ejecución de `indexar()` reemplaza la colección para que el corpus y sus
-embeddings queden sincronizados.
+`.run()` devuelve answer, trace (agente/tool), status, model, usage medido,
+contextos, traza_id, prompt_version, latencia_ms y ambiente_intacto. La operación
+normal no reinicia recursos: el simulador exige aprobación externa y allowlist.
+Una integración puede llamar `KubernetesSimulator.restart(..., approved=True)`;
+solo admite payments/checkout-api y no actúa sobre Kubernetes real.
 
-### Incident Commander con LangGraph
+## Medir → cambiar → volver a medir
 
-El módulo `src/taller04/incident_commander.py` conecta el MCP de telemetría, el
-RAG y la revisión humana:
-
-```python
-from langgraph.types import Command
-from taller04.incident_commander import IncidentMemory, build_graph
-from taller04.rag_taller04 import RagTaller04
-
-rag = RagTaller04()
-rag.indexar()
-graph = build_graph(rag=rag, memory=IncidentMemory())
-config = {"configurable": {"thread_id": "incident-demo"}}
-
-paused = graph.invoke({}, config)                 # llega a la aprobación humana
-finished = graph.invoke(Command(resume={"approved": False}), config)
+```bash
+uv run taller04 part0
+uv run taller04 guardrails
+uv run taller04 preflight                 # 10 controles balanceados, antes de usar el juez
+uv run taller04 evaluate --version v1
+# Revisar reports/v1/revision_ciega.json, SIN ejecutar judge todavía.
+# Crear etiquetas.csv: id,etiqueta; >=10 filas, incluida C11 y C12; aprueba/falla.
+uv run taller04 judge --version v1
+uv run taller04 evaluate --version v2
+uv run taller04 judge --version v2
+uv run taller04 export --version v1
+uv run taller04 export --version v2
 ```
 
-El grafo detecta la alerta activa de mayor prioridad, clasifica P1/P2/P3,
-propone código de remediación con el RAG, se pausa antes de cualquier ejecución,
-genera el Post-Incident Review y guarda el incidente en
-`output_data/incident_memory.sqlite3`. Cada nodo agrega tokens, latencia, timestamp y
-detalles a `_traza`. No existe un nodo ejecutor: una propuesta aprobada queda
-marcada como `approved_not_executed` hasta que se añada un ejecutor explícito.
+La evaluación guarda resultados por caso y permite continuar una ejecución incompleta.
+No reutilizar reports/v1 o reports/v2 después de cambiar modelo, prompt, datos o golden:
+archivar esos directorios y repetir ambas versiones. La versión del guardrail (v1/v2)
+es la mejora experimental; el prompt LLM se mantiene constante (CHANGELOG.md).
+Exportar después de que Langfuse haya ingerido los spans; el exportador comprueba
+corridas, tokens contra el testigo y ausencia de PII del golden. `witness*.jsonl` es
+solo verificación local, **no sustituye** `spans.jsonl` exportado del servidor.
 
-El flujo también incluye `self_reflect`, `external_judge` y `policy_gate`. El
-modo autónomo se activa únicamente con `autonomous=True` y un `executor` inyectado;
-la política solo permite acciones estructuradas de rollout restart y bloquea
-shell, pipes, borrados y comandos no incluidos en la allowlist. Sin executor, el
-resultado siempre es `not_executed`.
+## RAGAS e informe
+
+```bash
+uv venv .venv-ragas --python 3.12
+uv pip install --python .venv-ragas/bin/python -r requirements-ragas.lock.txt
+uv run taller04 ragas --version v1
+uv run taller04 ragas --version v2
+uv run taller04 report
+uv run pytest -q
+```
+
+RAGAS 0.4.3 va en otro entorno por incompatibilidad entre LangChain 0.3 y el
+LangGraph actual. Se usan las cuatro métricas reales del profesor y gpt-oss:120b:
+fidelidad, relevancia, precisión y recall de contexto. El cálculo guarda resultados
+incrementales y errores explícitos; un error no se convierte en cero.
+
+Los artefactos quedan en `reports/`: CSV base/mejorada, spans, verificaciones de
+exportación, RAGAS, guardrails propios/ejemplo, calibraciones, comparación, peores
+casos, alertas con umbrales medidos, grafo Mermaid e informe MD/PDF. Las tarifas
+hipotéticas son las del anexo docente (fila/fecha declaradas), no precios actuales.
+
+## Privacidad y límites
+
+Redacción recursiva de correos, cédula y teléfonos ecuatorianos en entrada, salida,
+trazas y memoria. No hay NER: los nombres de personas pueden escapar. Los patrones
+no prueban seguridad ante ataques desconocidos. Veinte casos dan resolución de 5 %
+y no sostienen mejoras estadísticas pequeñas. Las etiquetas humanas deben ser
+humanas: el programa no las inventa y bloquea el juez base mientras falten.
+
+`referencia/` contiene los laboratorios del profesor sin cambiar sus errores
+intencionales; la Parte 0 se ejecuta sobre ellos. La implementación previa del
+Taller03 sigue en `incident_commander.py`, `h200.py` y `rag_taller04.py`.
+
+## Juez compartido y reanudación
+
+El juez usa API nativa Ollama, think=low y contexto de 16384 por solicitud,
+porque el contexto predeterminado de 4096 truncaba evidencia RAGAS. No se modifica
+la configuración del servidor compartido. Se serializan nuestras solicitudes con
+un lock local para no provocar timeouts en la cola; cada veredicto y métrica
+terminados se conservan para continuar sin repetirlos. La caché lleva SHA-256 de
+las entradas completas y configuración; solo reutiliza juicios reales idénticos.
+Las lecturas de caché tienen span tool y cero tokens nuevos. Los CSV RAGAS incluyen
+input_sha256 y cache_source. No se estima variabilidad de réplicas con esa caché.
+
+Tras una indisponibilidad de Langfuse: `uv run taller04 drain`, exportar y cotejar.
+`recover` es una migración explícita para las mediciones anteriores a la cola OTLP;
+conserva IDs/tokens/respuestas, deriva inicio de fin menos duración y marca
+recovered_from_witness. Ver infra/README.md.
+
+El modo de aprobación del simulador se activa explícitamente con
+`uv run taller04 run --version v2 --approve-restart --question 'Reinicia checkout-api en payments'`.
+Ese flag concede aprobación solo para ese objetivo; no ejecuta nada en Kubernetes real.

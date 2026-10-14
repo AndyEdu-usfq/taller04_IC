@@ -1,0 +1,24 @@
+[
+  {
+    "nombre": "latencia",
+    "umbral": 66443.93750000001,
+    "unidad": "ms p95",
+    "ventana": "últimas 100 corridas o 30 min, mínimo 20",
+    "mirar": "spans llm por agente y retriever; comparar tiempo total y errores"
+  },
+  {
+    "nombre": "tokens",
+    "umbral": 18957.875000000004,
+    "unidad": "tokens p95",
+    "ventana": "últimas 100 corridas o 30 min, mínimo 20",
+    "mirar": "input/output del agente que acumula más tokens y tamaño de contextos"
+  },
+  {
+    "nombre": "bloqueos",
+    "umbral": 0.3,
+    "unidad": "fracción de corridas bloqueadas",
+    "ventana": "últimas 100 corridas o 30 min, mínimo 20",
+    "resolucion_golden": 0.05,
+    "mirar": "guardrail input/restart/output y motivos; distinguir ataque de falso positivo"
+  }
+]

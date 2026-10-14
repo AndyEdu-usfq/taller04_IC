@@ -1,0 +1,17 @@
+{
+  "agent_model": "zai-org/GLM-5.3-Flash",
+  "judge_model": "gpt-oss:120b",
+  "judge_context_tokens": 16384,
+  "judge_think": "low",
+  "temperature": 0,
+  "embedding_model": "bge-m3:latest",
+  "golden_sha256": "3133123d2d923a252af0f1ac2fc5c60eb8f59c505c6108848ba09ab30f2cb2f1",
+  "snapshot_sha256": "8e7b673ee801d463d5df60ebf6fced2125b769235377e6146507e03ea29184df",
+  "knowledge": {
+    "operacion.md": "58082a66eb566080a7abd61e3f794dc552a8763928fa54c44fd29ae2085665d6",
+    "seguridad.md": "ecb3598e907ae8dd4596139179e32bd3c58930726fec354d72b7bb3a3155481b"
+  },
+  "model_endpoints_verified_date": "2026-10-14",
+  "experiment_environment": "requirements.lock.txt",
+  "ragas_environment": "requirements-ragas.lock.txt"
+}
