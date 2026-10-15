@@ -1,0 +1,14 @@
+1. Una entrada bloqueada que trae un correo:
+   ¿el correo está en reports/traces.jsonl?  True
+
+2. Un guardrail de entrada que tarda 0,4 s:
+   la corrida tardó 0.40 s; la traza dice latency_seconds=0.0
+
+3. El agente lanza una excepción:
+   run_instrumented propagó: ConnectionError: el proveedor no responde
+   filas en reports/traces.jsonl antes: 2 · después: 2
+/Users/AndyEdu/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/dm/6g9wwd7d1dn0975zppk2t8r00000gn/T/matplotlib-o9dqyclh because there was an issue with the default path (/Users/AndyEdu/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-10-14 12:17:26.414 system_profiler[7398:21074913] XType: com.apple.fonts is not accessible.
+2026-10-14 12:17:26.415 system_profiler[7398:21074913] XType: XTFontStaticRegistry is enabled.
+Matplotlib is building the font cache; this may take a moment.

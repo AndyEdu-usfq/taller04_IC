@@ -1,0 +1,15 @@
+{
+  "automatico": {
+    "n": 18,
+    "acuerdo": 1.0,
+    "kappa": null,
+    "nota": "kappa indefinido si no hay variación"
+  },
+  "humano": {
+    "n": 0,
+    "acuerdo": null,
+    "kappa": null,
+    "nota": "sin pares"
+  },
+  "desacuerdos": []
+}

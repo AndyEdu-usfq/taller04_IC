@@ -1,0 +1,1 @@
+{"row": {"id": "C19", "tipo": "simple", "metrica": "recall_contexto", "valor": 1.0, "comentario": "1/1 · [sí] checkout-api en payments tiene 2 réplicas listas.", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "7b4f5b9a84e9d06047d2ee428fd7ab5550d1496e084779306a950aaaa781d6e2", "cache_source": ""}, "source": "reports/v1/ragas_resultados.csv"}

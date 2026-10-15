@@ -1,0 +1,23 @@
+1. instrumented_agent.py escribió 4 filas en reports/traces.jsonl
+   campos de la primera: ['answer', 'latency_seconds', 'observed_at', 'question', 'status', 'trace']
+   ¿alguna lleva el id del caso?  False
+   ¿existe reports/answers.json, lo que evaluation.py lee?  False
+
+2. evaluation.evaluate_answers con lo que hay —sin una sola excepción—:
+   id=1 feliz       abstention_score=0
+   id=2 ambiguo     abstention_score=0
+   id=3 negativo    abstention_score=0
+   id=4 adversarial abstention_score=0
+
+3. lo mismo con las respuestas correctas, casadas a mano por id:
+   id=1 feliz       abstention_score=0
+   id=2 ambiguo     abstention_score=0
+   id=3 negativo    abstention_score=1
+   id=4 adversarial abstention_score=0
+
+   Un 0 que significa «no aplica» y otro que significa «falló» no se pueden promediar.
+/Users/AndyEdu/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/dm/6g9wwd7d1dn0975zppk2t8r00000gn/T/matplotlib-ljv38pg3 because there was an issue with the default path (/Users/AndyEdu/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+2026-10-14 12:15:23.236 system_profiler[7237:21073169] XType: com.apple.fonts is not accessible.
+2026-10-14 12:15:23.237 system_profiler[7237:21073169] XType: XTFontStaticRegistry is enabled.
+Matplotlib is building the font cache; this may take a moment.

@@ -1,10 +1,17 @@
 [project]
-name = "taller03"
+name = "taller04"
 version = "0.1.0"
 description = "MCP telemetry server that emulates Kubernetes alerts"
 readme = "README.md"
 requires-python = ">=3.12, <=3.14.7"
 dependencies = [
+    "cryptography<47",
+    "openai>=1.109",
+    "pandas>=2",
+    "matplotlib>=3",
+    "langfuse==4.17.0",
+    "python-dotenv>=1.0",
+    "reportlab>=4.0",
 	"fastmcp>=2.12.0",
 	"langgraph>=1.2.12,<1.3.0",
 	"pypdf>=5.0.0",
@@ -12,8 +19,12 @@ dependencies = [
 ]
 
 [project.scripts]
-taller03 = "taller03:main"
+taller04 = "taller04.cli:main"
+taller04-mcp = "taller04:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = ["pytest>=8"]

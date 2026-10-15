@@ -1,0 +1,1 @@
+{"row": {"id": "C09", "tipo": "simple", "metrica": "recall_contexto", "valor": 1.0, "comentario": "1/1 · [sí] frontend en web tiene 3 pods.", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "dd7b9183962b4a5ed6db0451aacdf49fcaeafe3df4e257165155e07809e3b2fc", "cache_source": ""}, "source": "reports/v2/ragas_resultados.csv"}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="510" height="390" preserveAspectRatio="xMinYMin meet" viewBox="0 0 510 390" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="510" height="390"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-390)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="120" y="355" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="247.251" y="365" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,730) scale(1,-1)">start</text>
+			<rect x="120" y="317" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="221.385" y="327" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,654) scale(1,-1)">telemetry observer</text>
+			<path d="M 255,355 L 255,346 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 349, 258 349, 255 345" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="279" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="227.3835" y="289" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,578) scale(1,-1)">triage classifier</text>
+			<path d="M 255,317 L 255,308 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 311, 258 311, 255 307" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="241" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="226.8795" y="251" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,502) scale(1,-1)">rag investigator</text>
+			<path d="M 255,279 L 255,270 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 273, 258 273, 255 269" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="203" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="216.885" y="213" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,426) scale(1,-1)">remediation engineer</text>
+			<path d="M 255,241 L 255,232 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 235, 258 235, 255 231" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="165" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="227.388" y="175" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,350) scale(1,-1)">safety reviewer</text>
+			<path d="M 255,203 L 255,194 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 197, 258 197, 255 193" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="127" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="219.378" y="137" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,274) scale(1,-1)">simulation executor</text>
+			<path d="M 255,165 L 255,156 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 159, 258 159, 255 155" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="89" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="236.127" y="99" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,198) scale(1,-1)">pir analyst</text>
+			<path d="M 255,127 L 255,118 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 121, 258 121, 255 117" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="51" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="226.3845" y="61" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,122) scale(1,-1)">learning curator</text>
+			<path d="M 255,89 L 255,80 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 83, 258 83, 255 79" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+			<rect x="120" y="13" width="270" height="28" rx="7" ry="7" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,96%); fill-rule: evenodd;"/>
+			<text x="248.502" y="23" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,46) scale(1,-1)">end</text>
+			<path d="M 255,51 L 255,42 Z" style="stroke: rgb(16%,34%,45%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="252 45, 258 45, 255 41" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(16%,34%,45%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

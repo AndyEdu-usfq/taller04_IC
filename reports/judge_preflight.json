@@ -1,0 +1,73 @@
+{
+  "modelo": "gpt-oss:120b",
+  "tipo": "controles sintéticos balanceados; no sustituye etiquetas humanas",
+  "metricas": {
+    "n": 10,
+    "acuerdo": 1.0,
+    "kappa": 1.0,
+    "nota": ""
+  },
+  "valid": true,
+  "casos": [
+    {
+      "id": "control-0",
+      "etiqueta_control": true,
+      "juez": true,
+      "razon": "La evidencia muestra 9 alertas, de las cuales 8 tienen status \"firing\" y 1 está \"resolved\". La respuesta coincide con este recuento."
+    },
+    {
+      "id": "control-1",
+      "etiqueta_control": false,
+      "juez": false,
+      "razon": "La respuesta no coincide con la evidencia; hay 8 alertas con status \"firing\" en los datos proporcionados, pero la respuesta indica 999 recursos y no responde la pregunta."
+    },
+    {
+      "id": "control-2",
+      "etiqueta_control": true,
+      "juez": true,
+      "razon": "La respuesta indica que hay 3 alertas P1 en estado firing, lo cual coincide exactamente con los datos proporcionados en la evidencia, donde aparecen tres alertas con severity \"P1\" y status \"firing\"."
+    },
+    {
+      "id": "control-3",
+      "etiqueta_control": false,
+      "juez": false,
+      "razon": "La respuesta no coincide con la evidencia ni con la referencia; la evidencia muestra 3 alertas P1 en estado firing, pero la respuesta indica 999 recursos y contenido no relacionado."
+    },
+    {
+      "id": "control-4",
+      "etiqueta_control": true,
+      "juez": true,
+      "razon": "La respuesta indica que hay 3 alertas P2 firing, lo cual coincide con el recuento de alertas de severidad P2 y estado 'firing' en la evidencia proporcionada (k8s-prod-db-002, k8s-prod-db-005 y k8s-prod-cache-006)."
+    },
+    {
+      "id": "control-5",
+      "etiqueta_control": false,
+      "juez": false,
+      "razon": "La respuesta indica 999 recursos y no menciona la cantidad de alertas P2 firing, mientras que la evidencia muestra claramente 3 alertas con severity P2 y status firing. La respuesta es incorrecta respecto a la pregunta."
+    },
+    {
+      "id": "control-6",
+      "etiqueta_control": true,
+      "juez": true,
+      "razon": "La evidencia muestra exactamente dos alertas con severity \"P3\" y status \"firing\", coincidiendo con la respuesta proporcionada."
+    },
+    {
+      "id": "control-7",
+      "etiqueta_control": false,
+      "juez": false,
+      "razon": "La respuesta proporcionada ('Hay 999 recursos...') no coincide con la evidencia, que muestra exactamente 2 alertas con severidad P3 en estado firing. Por lo tanto la respuesta es incorrecta."
+    },
+    {
+      "id": "control-8",
+      "etiqueta_control": true,
+      "juez": true,
+      "razon": "La respuesta indica que catalog tiene 1 alerta resolved, lo cual coincide con la evidencia que muestra exactamente una alerta con status \"resolved\" en el namespace \"catalog\"."
+    },
+    {
+      "id": "control-9",
+      "etiqueta_control": false,
+      "juez": false,
+      "razon": "La respuesta afirma que hay 999 recursos y no menciona la alerta resolved del catálogo, contradiciendo la evidencia que muestra exactamente una alerta con status \"resolved\" en el namespace catalog. Por lo tanto la respuesta es incorrecta."
+    }
+  ]
+}

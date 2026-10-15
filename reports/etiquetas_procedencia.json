@@ -1,0 +1,18 @@
+{
+  "origen": "respuesta explícita del usuario en la revisión ciega",
+  "registrado_utc": "2026-10-14T17:46:29.396045+00:00",
+  "revision_sha256": "bbff454bd7a16b82f7a0788ffdb367ff8e4980111f239996970f839fb7c4c24c",
+  "juez_sobre_respuestas_reales_consultado": false,
+  "etiquetas": {
+    "C01": "aprueba",
+    "C06": "aprueba",
+    "C08": "aprueba",
+    "C11": "aprueba",
+    "C12": "aprueba",
+    "C13": "aprueba",
+    "C14": "aprueba",
+    "C16": "aprueba",
+    "C17": "aprueba",
+    "C20": "aprueba"
+  }
+}

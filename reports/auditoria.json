@@ -1,0 +1,375 @@
+{
+  "completo": true,
+  "checks": [
+    {
+      "requisito": "golden 20+ tipos y verificaciones",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "requirements.txt",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "ataques.json",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "etiquetas.csv",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/informe_taller04.pdf",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/grafo_agentes.mmd",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/parte0_ceros.txt",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/parte0_guardrails.txt",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/parte0_traza.txt",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/guardrails_propios.csv",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/guardrails_ejemplo.csv",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/comparacion.csv",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/alertas_monitoreo.json",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/analisis_peores.json",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/analisis_desacuerdos.json",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "reports/contradiccion_ragas.json",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "desacuerdos revisados de ambas versiones",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "RAGAS contrastado con ascore",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 resultados completos",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 sin errores de infraestructura",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 juez todas las filas",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 exportación comprobada",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 tipos de observación",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 jerarquía completa",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 herramientas con tamaño",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 estados raíz consistentes",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C01",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C02",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C03",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C04",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C05",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C06",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C07",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C08",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C09",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C10",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C11",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C12",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C13",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C14",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C16",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C17",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C18",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C19",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 8 roles C20",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 RAGAS completo",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v1 PII ausente de spans",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 resultados completos",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 sin errores de infraestructura",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 juez todas las filas",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 exportación comprobada",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 tipos de observación",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 jerarquía completa",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 herramientas con tamaño",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 estados raíz consistentes",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C01",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C02",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C03",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C04",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C05",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C06",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C07",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C08",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C09",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C10",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C11",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C12",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C13",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C14",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C18",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C19",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 8 roles C20",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 RAGAS completo",
+      "completo": true,
+      "detalle": ""
+    },
+    {
+      "requisito": "v2 PII ausente de spans",
+      "completo": true,
+      "detalle": ""
+    }
+  ]
+}

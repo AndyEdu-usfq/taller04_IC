@@ -1,0 +1,15 @@
+{
+  "exportado": {
+    "tokens_entrada": 137304,
+    "tokens_salida": 79192
+  },
+  "testigo": {
+    "tokens_entrada": 137304,
+    "tokens_salida": 79192
+  },
+  "corridas": 20,
+  "coincide": true,
+  "spans": 441,
+  "observaciones_faltantes": [],
+  "observaciones_cotejadas": 381
+}

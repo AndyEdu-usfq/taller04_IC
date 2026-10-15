@@ -1,0 +1,17 @@
+{
+  "etiquetas": [
+    "start",
+    "telemetry observer",
+    "triage classifier",
+    "rag investigator",
+    "remediation engineer",
+    "safety reviewer",
+    "simulation executor",
+    "pir analyst",
+    "learning curator",
+    "end"
+  ],
+  "nodos": 10,
+  "fuente": "grafo real compilado en grafo_agentes.mmd",
+  "coincide": true
+}

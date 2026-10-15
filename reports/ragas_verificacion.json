@@ -1,0 +1,27 @@
+{
+  "id": "C03",
+  "version": "v1",
+  "coincide": true,
+  "metricas": {
+    "fidelidad": {
+      "docente": 0.75,
+      "ragas_ascore": 0.75,
+      "coincide": true
+    },
+    "relevancia_respuesta": {
+      "docente": 0.875976634283386,
+      "ragas_ascore": 0.875976634283386,
+      "coincide": true
+    },
+    "precision_contexto": {
+      "docente": 0.9999999999,
+      "ragas_ascore": 0.9999999999,
+      "coincide": true
+    },
+    "recall_contexto": {
+      "docente": 1.0,
+      "ragas_ascore": 1.0,
+      "coincide": true
+    }
+  }
+}

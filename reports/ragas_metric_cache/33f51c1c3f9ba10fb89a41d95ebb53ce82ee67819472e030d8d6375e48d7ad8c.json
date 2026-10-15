@@ -1,0 +1,1 @@
+{"row": {"id": "C10", "tipo": "simple", "metrica": "recall_contexto", "valor": 1.0, "comentario": "1/1 · [sí] Hay 2 pods en CrashLoopBackOff de frontend en web.", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "33f51c1c3f9ba10fb89a41d95ebb53ce82ee67819472e030d8d6375e48d7ad8c", "cache_source": ""}, "source": "reports/v2/ragas_resultados.csv"}

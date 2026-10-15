@@ -1,0 +1,20 @@
+{
+  "paginas": 13,
+  "secciones_encontradas": {
+    "Incident Commander": true,
+    "Parte 0": true,
+    "observabilidad": true,
+    "golden set": true,
+    "RAGAS": true,
+    "Tres peores": true,
+    "guardrails": true,
+    "ajuste fino": true,
+    "Monitoreo": true,
+    "C20": true,
+    "Mayor consumo de tokens": true,
+    "timeout": true
+  },
+  "bloques_fuera_de_margenes": [],
+  "encabezado_parte4_junto_al_texto": true,
+  "completo": true
+}

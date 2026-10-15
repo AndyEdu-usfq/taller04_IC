@@ -1,0 +1,6 @@
+{
+  "snapshot": "resultados_entrada_ragas.csv",
+  "sha256": "2cb94e809e4bdaab58cc303da0f37a9d8a7233ee0146724ea09352470ffd2016",
+  "casos": 20,
+  "nota": "Se conservó el contenido de los descriptores ya abiertos antes de que el juez actualice resultados.csv; las respuestas no cambiaron."
+}

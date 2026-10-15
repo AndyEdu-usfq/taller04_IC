@@ -1,0 +1,1 @@
+{"row": {"id": "C01", "tipo": "simple", "metrica": "recall_contexto", "valor": "1.0", "comentario": "1/1 · [sí] Hay 8 alertas firing.", "error": "", "juez": "gpt-oss:120b", "ragas": "0.4.3", "input_sha256": "b44800fe750a5cec1df963fddaf80b1a885786bb7dce1e09140e5861bfd5be84", "cache_source": ""}, "source": "reports/v1/ragas_resultados.csv"}

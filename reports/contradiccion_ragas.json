@@ -1,0 +1,55 @@
+{
+  "version": "v1",
+  "id": "C02",
+  "automatico": 1,
+  "fidelidad": 0.75,
+  "detalle_ragas": "6/8 · [sí] Hay 3 alertas P1 en estado firing.; [no] El detalle se presenta por namespace y servicio, con fuente chunk_id kubernetes-snapshot y verificado según criterio de conteo de operacion-c0.; [no] Alerta k8s-prod-api-001 pertenece al namespace payments, al servicio checkout-api, y su resumen indica tasa de error HTTP 5xx superior al umbral crítico.; [sí] Alerta k8s-prod-api-005 pertenece al namespace identity, al servicio auth-api, y su resumen indica fallos de autenticación en producción.; [sí] Alerta k8s-prod-api-006 pertenece al namespace shipping, al servicio dispatch-api, y su resumen indica dispatch API sin endpoints listos.; [sí] La alerta k8s-prod-cache-004 (P2, catalog/redis) está en estado resolved y no se cuenta como activa.; [sí] El runbook de operación indica que la atención de alertas P1 precede a la de alertas P2 y P3.; [sí] Priorizar entre las tres alertas P1 requiere evidencia de impacto adicional.",
+  "interpretacion": "El conteo principal de 3 alertas P1 es correcto según kubectl_verificacion. RAGAS solo respalda el 75 % de las afirmaciones que extrajo de la respuesta: la exactitud del número no garantiza que cada comentario o cita adicional sea fiel al contexto. Este es un desacuerdo de constructos medidos, no evidencia de que el verificador o RAGAS sea una verdad absoluta.",
+  "fuentes": [
+    "reports/v1/resultados.csv",
+    "reports/v1/ragas_resultados.csv"
+  ],
+  "revision_manual": "Una afirmación marcada no (checkout-api y errores HTTP 5xx por encima del umbral crítico) sí está respaldada por description de k8s-prod-api-001 en el snapshot. Eso apunta a un falso negativo del juez NLI de RAGAS. La afirmación de procedencia con chunk_id tampoco está íntegramente en los textos porque RAGAS recibe texto, no todos sus metadatos. Se reporta el 0.75 observado, sin tratarlo como verdad absoluta ni corregir la métrica a mano.",
+  "revision_adicional": {
+    "version": "v1",
+    "id": "C05",
+    "automatico": 1,
+    "fidelidad": 0.4,
+    "detalle_ragas": "2/5 · [sí] There is 1 alert with state resolved in the namespace catalog.; [no] The resolved alert concerns the service redis with identifier k8s-prod-cache-004, severity P2, description \"Redis memory pressure\", and start time 2026-10-03T07:05:00Z.; [no] The namespace catalog also has another alert with state firing, identifier k8s-prod-cache-006, and description \"Catalog cache evictions increasing\".; [sí] The firing alert is not counted in the total of resolved alerts.; [no] The information source is the chunk kubernetes-snapshot from the simulated kubectl command.",
+    "evidencia_snapshot": [
+      {
+        "id": "k8s-prod-cache-006",
+        "severity": "P2",
+        "status": "firing",
+        "cluster": "prod-us-east-1",
+        "namespace": "catalog",
+        "service": "redis",
+        "summary": "Catalog cache evictions increasing",
+        "description": "Cache evictions are increasing and may degrade catalog latency.",
+        "started_at": "2026-10-03T08:55:00Z",
+        "runbook_url": "https://runbooks.example.com/catalog/cache-evictions",
+        "labels": {
+          "team": "catalog",
+          "tier": "important"
+        }
+      },
+      {
+        "id": "k8s-prod-cache-004",
+        "severity": "P2",
+        "status": "resolved",
+        "cluster": "prod-us-east-1",
+        "namespace": "catalog",
+        "service": "redis",
+        "summary": "Redis memory pressure",
+        "description": "Redis memory usage exceeded 85% before returning to normal levels.",
+        "started_at": "2026-10-03T07:05:00Z",
+        "runbook_url": "https://runbooks.example.com/catalog/redis-memory",
+        "labels": {
+          "team": "catalog",
+          "tier": "important"
+        }
+      }
+    ],
+    "revision_manual": "El conteo 1 resolved es correcto. Los datos de redis k8s-prod-cache-004 (P2, summary y started_at) y la alerta firing k8s-prod-cache-006 aparecen explícitamente en el contexto original. Los dos rechazos NLI de esas afirmaciones compuestas no están sustentados por ausencia de datos; se documentan como falsos negativos del juez de fidelidad. La atribución al chunk se conserva en metadatos y respuesta, pero la métrica recibe solo texto. Se mantiene 0.4 sin corregir ni repetir para buscar un score favorable."
+  }
+}

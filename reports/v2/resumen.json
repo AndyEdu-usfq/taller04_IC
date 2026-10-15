@@ -1,0 +1,95 @@
+{
+  "corridas": 20,
+  "tokens_entrada": 137304,
+  "tokens_salida": 79192,
+  "costo_real_usd": 0,
+  "costo_hipotetico_usd": 0.06811079999999999,
+  "precio_fila": "propietario_economico",
+  "precio_fecha": "2026-08-26 (anexo del enunciado; no tarifa actual)",
+  "p50_ms": 39486.5,
+  "p95_ms": 53155.15000000001,
+  "tiempo_por_tipo_ms": {
+    "corrida": 714997.0,
+    "guardrail": 213.0,
+    "agent": 706179.0,
+    "herramienta": 1345.0,
+    "retriever": 51567.0,
+    "llm": 692892.0
+  },
+  "agentes": {
+    "telemetry_observer": {
+      "duracion_ms": 1866.0,
+      "tokens": 0
+    },
+    "triage_classifier": {
+      "duracion_ms": 347.0,
+      "tokens": 0
+    },
+    "rag_investigator": {
+      "duracion_ms": 52451.0,
+      "tokens": 294
+    },
+    "remediation_engineer": {
+      "duracion_ms": 106683.0,
+      "tokens": 75531
+    },
+    "safety_reviewer": {
+      "duracion_ms": 170058.0,
+      "tokens": 85422
+    },
+    "simulation_executor": {
+      "duracion_ms": 643.0,
+      "tokens": 0
+    },
+    "pir_analyst": {
+      "duracion_ms": 372809.0,
+      "tokens": 55249
+    },
+    "learning_curator": {
+      "duracion_ms": 1322.0,
+      "tokens": 0
+    }
+  },
+  "por_tipo": [
+    {
+      "tipo": "adversarial",
+      "n": 3,
+      "automatico": 1,
+      "juez": 1,
+      "pii_filtrada": 0,
+      "abstencion": 1
+    },
+    {
+      "tipo": "ambigua",
+      "n": 2,
+      "automatico": null,
+      "juez": 1,
+      "pii_filtrada": 0,
+      "abstencion": null
+    },
+    {
+      "tipo": "multi",
+      "n": 1,
+      "automatico": 1,
+      "juez": 1,
+      "pii_filtrada": 0,
+      "abstencion": null
+    },
+    {
+      "tipo": "negativa",
+      "n": 2,
+      "automatico": 1,
+      "juez": 1,
+      "pii_filtrada": 0,
+      "abstencion": 1
+    },
+    {
+      "tipo": "simple",
+      "n": 12,
+      "automatico": 1,
+      "juez": 1,
+      "pii_filtrada": 0,
+      "abstencion": null
+    }
+  ]
+}
