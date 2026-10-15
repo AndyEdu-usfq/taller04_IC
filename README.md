@@ -7,6 +7,32 @@ ejecución simulada, PIR y memoria. Nunca invoca shell o kubectl real.
 
 ## Preparar
 
+### Prerrequisitos
+
+Ejecutar desde la raíz de `taller04/`, con `uv` instalado. Se usa Python 3.12;
+`uv sync --python 3.12` prepara el entorno y puede necesitar Internet para descargar
+Python y dependencias. El directorio `.venv` no se copia entre equipos.
+
+Antes de ejecutar `doctor`:
+
+- Conectar GlobalProtect a la red de la universidad. Deben estar disponibles el
+  agente en `172.28.230.10:12555` y Ollama en `172.28.230.10:11434`, con los modelos
+  declarados en `.env`.
+- Abrir Docker Desktop y levantar Langfuse. En esta estructura de carpetas se puede
+  usar `bash ../taller-04-llmops/langfuse/levantar_langfuse.sh`. La configuración y
+  los volúmenes del servicio están fuera de este repositorio. Ver `infra/README.md`
+  para el ajuste de memoria usado durante las mediciones.
+- Tener Qdrant disponible en `http://localhost:6333` (o en `QDRANT_URL`). Este
+  repositorio no incluye un Compose que lo levante: hay que iniciar el servicio
+  Qdrant del entorno y conservar su almacenamiento para reutilizar el índice.
+- Configurar `.env` con las URLs y las claves API del proyecto Langfuse. Las claves
+  `LANGFUSE_PUBLIC_KEY` y `LANGFUSE_SECRET_KEY` se obtienen en la configuración del
+  proyecto; son distintas del correo y contraseña para entrar a la interfaz.
+
+`doctor` comprueba servicios reales; no los instala ni los inicia. Comprueba agente,
+juez, autenticación Langfuse, colecciones Qdrant y lectura del golden. Se detiene
+en el primer error; no comprueba embeddings ni que el índice esté listo.
+
 ```bash
 uv sync --python 3.12
 cp .env.example .env
@@ -15,6 +41,28 @@ uv run taller04 doctor
 uv run taller04 setup
 uv run taller04 index
 ```
+
+**Si `.env` ya existe, conservarlo:** no repetir `cp .env.example .env`, porque
+sobrescribe sus claves. `setup` registra el prompt en Langfuse e `index` reconstruye
+la colección: son preparación inicial, no pasos necesarios cada vez que se opera.
+
+Si aparece `not a valid Python environment (no Python executable was found)`,
+el entorno está incompleto. Desde `taller04/`, renombrarlo con un nombre libre y
+recrearlo:
+
+```bash
+mv .venv .venv.incompleto
+uv sync --python 3.12
+uv run taller04 doctor
+```
+
+Si el error menciona `Failed to initialize cache` o permisos sobre `~/.cache/uv`,
+se puede seleccionar una caché escribible para ese comando:
+`UV_CACHE_DIR=/tmp/taller04-uv-cache uv sync --python 3.12`.
+Si aparece conexión rechazada en localhost, revisar Langfuse/Qdrant; si hay timeout
+hacia `172.28.230.10`, revisar VPN y disponibilidad de la H200. Si el modelo no está
+disponible, comprobar los nombres declarados en `.env` con el administrador del
+servidor antes de cambiar la configuración de las mediciones.
 
 `index` reconstruye solo la colección `taller04_kubernetes` a partir de
 `data/knowledge`. La colección anterior no se borra. `data/kubernetes.json` contiene
